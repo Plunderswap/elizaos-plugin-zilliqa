@@ -1,0 +1,55 @@
+{
+    "name": "@elizaos-plugins/plugin-zilliqa",
+    "version": "0.1.9",
+    "main": "dist/index.js",
+    "type": "module",
+    "types": "dist/index.d.ts",
+    "dependencies": {
+        "@goat-sdk/adapter-vercel-ai": "0.2.7",
+        "@goat-sdk/core": "0.4.6",
+        "@goat-sdk/plugin-zilliqa": "0.1.3",
+        "@goat-sdk/wallet-evm": "0.2.6",
+        "@goat-sdk/wallet-viem": "0.2.6",
+        "@goat-sdk/wallet-zilliqa": "0.2.6",
+        "@zilliqa-js/account": "^3.5.0",
+        "@zilliqa-js/zilliqa": "^3.5.0",
+        "tsup": "8.3.5"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "1.5.3"
+    },
+    "scripts": {
+        "build": "tsup --format esm --dts",
+        "dev": "tsup --format esm --dts --watch",
+        "lint": "biome check src/",
+        "lint:fix": "biome check --apply src/",
+        "format": "biome format src/",
+        "format:fix": "biome format --write src/"
+    },
+    "peerDependencies": {
+        "whatwg-url": "7.1.0"
+    },
+    "agentConfig": {
+        "pluginType": "elizaos:client:1.0.0",
+        "pluginParameters": {
+            "EVM_PRIVATE_KEY": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Your EVM wallet private key",
+                "optional": false
+            },
+            "EVM_PROVIDER_URL": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Your RPC provider URL (e.g., Infura, Alchemy)",
+                "optional": false
+            },
+            "ENABLE_ZILLIQA": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Enable Zilliqa functionality within the plugin",
+                "optional": false
+            }
+        }
+    }
+}
